@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Recetario</title>
+</head>
+<body>
+
+        <article id="componente">
+       <div class="margen">
+        <h1 id="titulo">RECETARIO</h1>
+
+        <div class="separador">
+            <img src="../image/separador 2-2.jpg" alt="separador">
+        </div>
+
+        <section class="contenedor1">
+
+            <h2>Escoge una receta</h2>
+            <hr>
+
+            <input type="text" v-model="buscar" placeholder="Buscar...">
+
+            <ul>
+            <li v-for="receta in recetas"
+                v-show="receta.nombre.toLowerCase().includes(buscar.toLowerCase())"
+                @click="seleccionar(receta)">
+                {{ receta.nombre }}
+            </li>
+            </ul>
+
+            <hr>
+
+        <!--detalles -->
+            <section class="contenedor2">
+
+        <div class="receta-box">
+
+            <div v-if="recetaSeleccionada">
+                 <img :src="recetaSeleccionada.imagen" alt="" style="width:150px; height:150px; object-fit:cover; margin-bottom:10px;">
+            <h2>{{ recetaSeleccionada.nombre }}</h2>
+            <p><strong>Porciones:</strong> {{ recetaSeleccionada.porciones }}</p>
+
+            <h3>Ingredientes</h3>
+            <ul>
+                <li v-for="ing in recetaSeleccionada.ingredientes">
+                {{ ing }}
+                </li>
+            </ul>
+
+            <h3>Preparación</h3>
+            <ol>
+                <li v-for="paso in recetaSeleccionada.pasos">
+                {{ paso }}
+                </li>
+            </ol>
+
+           
+            </div>
+
+            <div v-else>
+            <p>como hacerlo!</p>
+            </div>
+            </div>
+
+        </section><!--termina los detalles :P -->
+
+            <button @click="formularioReceta = true">
+                 Agregar receta
+            </button>
+
+            <button @click="cancelarFormularioReceta">
+                Cancelar
+            </button>
+
+           <article v-if="formularioReceta" class="p-4 border shadow">
+            <h3>Agregar nueva receta</h3>
+
+                <input type="text" v-model="nuevaReceta.nombre" placeholder="Nombre de la receta">
+                <br><br>
+
+                <input type="number" v-model="nuevaReceta.porciones" placeholder="Porciones">
+                <br><br>
+
+                <hr>
+
+                <h4>Ingredientes</h4>
+
+                <input type="text" v-model="ingredienteT" placeholder="Ingrediente">
+                <button @click="agregarIngrediente">Agregar</button>
+
+                <ul>
+                <li v-for="ing in nuevaReceta.ingredientes">
+                    {{ ing }}
+                </li>
+                </ul>
+
+                <hr>
+
+                <h4>Pasos</h4>
+
+                <input type="text" v-model="pasoT" placeholder="Paso">
+                <button @click="agregarPaso">Agregar</button>
+
+                <ol>
+                <li v-for="p in nuevaReceta.pasos">
+                    {{ p }}
+                </li>
+                </ol>
+
+                <hr>
+
+                <button @click="guardarReceta">Guardar receta</button>
+                <button @click="cancelarFormularioReceta">Cancelar</button>
+
+            </article>
+
+
+
+         </section>
+
+       
+        </div>
+        </article>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="../js/script.js"></script>
+
+
+</body>
+</html>
+
