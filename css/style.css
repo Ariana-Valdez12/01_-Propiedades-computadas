@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(128, 90, 90);
+    margin: 0%;
+    padding: 0%;
+    font-family: "Playwrite NZ Basic", cursive;
+    text-decoration: none;
+}
+#titulo{
+    text-align: center;
+    color: #fff;
+    background-color: rgb(51, 23, 23);
+}
+img{
+    align-items: center;
+    width: 100%;
+    height: 190px;
+}
+
+
+
+.contenedor1{
+    margin-top: 3%;
+    background-color: #fff;
+    width: 80%;
+    height: auto;
+    padding-bottom: 10%;
+    margin-left: 10%;
+}
+
+
+
+.receta-box {
+  background: #dfb2b2;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(91, 32, 32, 0.1);
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
